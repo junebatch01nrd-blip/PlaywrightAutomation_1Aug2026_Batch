@@ -1,0 +1,246 @@
+First Automation test case---
+
+How do you Automate login scenario ?
+
+Below setup required to run first playwright test...
+
+node.js --- help to execute javascript code or test....
+Vs code --- to write the automation script 
+languague- Typescript/javascript
+Created playwright framework  - web automation platform/tool
+Playwright+Typescript
+required url link - userid password
+browser  - internet 
+
+
+Async - means doing work in the background without stopping other work.
+Sync - means work happens one by one, step by step.
+Await - means wait for a task to finish before moving to the next step.
+
+Difference between sync and async:
+Sync: code runs in order and stops until the task is done.
+Async: code can continue while waiting for a task.
+
+Example:
+Sync: open page -> type username -> click login
+Async: start loading page -> wait for it -> then continue
+
+test 1      url                     
+test 2      username password  
+test 3      login button 
+
+In Playwright we have inbuilt Fixtures
+
+Page
+Context
+Browser
+Request --- api testing 
+
+What is fixture--
+Fixture is predefined setup that can initialized before start the test execution
+
+browser - browser software
+context - incognito mode of browser
+page -    tab of incognito mode of browser
+
+Exercise---
+Open www.amazon.com --------------without using fixture 
+open wwww.youtube.com ------------with fixture
+
+Dom-
+Document object model---
+Playwright interact with Dom to find the element address..
+
+DOM-
+DOM stands for Document Object Model.
+It is a tree-like structure that represents all elements of a web page.
+It is created by the browser when an HTML page is loaded.
+Each element becomes a node in the DOM, so JavaScript and Playwright can find and interact with it.
+
+Dom
+    └── Document
+        └── HTML
+            └── Head
+                └── Title
+            └── Body
+                └── H1
+                └── Button
+                └── Input
+                └── Link
+                └── Attributes and values
+
+HTML elements are building blocks of a web page.
+Some common HTML elements:
+<button> ---            Role -button
+<a>      ---            Role link
+<input type='text'>     Role textbox
+<input type='checkbox'> role checkbox
+<select>                Role combobox
+<h1> <h6>               Role heading
+<ul> and <li> -> list   Role listitems
+<p> -> paragraph
+<a> -> link
+<img> -> image
+<div> -> container
+<span> -> small content or small text present inside
+
+HTML elements become DOM elements when the page loads.
+
+
+Locators ??
+What is locator---
+Locatopr is the way/method to find the webelement location or their address..
+
+There Are Playwright recomended locators
+
+1. getByRole()
+2. getByLabel()
+3. getByPlaceholder()
+4. getByText()
+5. getByAlttext()
+6. getByTitle()
+7. getByTestId()
+
+Fallback locators --
+
+8.CSS      input[attribute='value']
+9.Xpath    //input[@attribute='value']
+
+
+1.getByRole---
+    Finds an element by ARIA role and accessible name.
+    Example: page.getByRole('button', { name: 'Submit' })
+    HTML: <button>Submit</button>
+    HTML: <a role="button" aria-label="Submit">Submit</a>
+
+2.getByLabel---
+    Finds a form control by its associated label text.
+    Example: page.getByLabel('Enter your full Name')
+    HTML: <label>Enter your full Name<input type="text" name="fullName" /></label>
+
+3.getByPlaceholder()
+    Finds an input element by its placeholder text.
+    Example: page.getByPlaceholder('Search practice labs...')
+    HTML: <input placeholder="Search practice labs..." />
+
+4.getByText()
+    Finds an element by visible text content.
+    Example: page.getByText('Practice Workspace')
+    HTML: <h1>Practice Workspace</h1>
+
+5.getByAltText()
+    Finds an image or media element by its alt text.
+    Example: page.getByAltText('LetCode')
+    HTML: <img src="letcode.png" alt="LetCode" />
+
+6.getByTitle()
+    Finds an element by its title attribute.
+    Example: page.getByTitle('Copy to clipboard')
+    HTML: <button title="Copy to clipboard">Copy</button>
+
+7.getByTestId()
+    Finds an element by a test-id attribute.
+    Example: page.getByTestId('username')
+    HTML: <div data-testid="username"></div>
+
+8.CSS  - deals with tag, Id, Class, attribute = value
+use with tag-
+    page.locator('input')  -- tags
+    HTML: <input />
+
+use with id-
+    page.locator('tagname#Id') ----------Rule syntax
+    page.locator('input#user-name')
+    page.locator('#user-name')   ---#Id
+    HTML: <input id="user-name" />
+
+use with Class
+    page.locator('tagname.classname') ------Rule syntax
+    page.locator('input.input_error')
+    page.locator('.input_error')    ------ (.classname)
+    HTML: <input class="input_error" />
+
+use with attribute and value
+    page.locator('tagname[attribute="value"]')    ----Rule syntax
+    page.locator('input[id="user-name"]')
+    page.locator('input[placeholder="Username"]') 
+    page.locator('[placeholder="Username"]') 
+    page.locator('input[placeholder*="logged in"]')
+    HTML: <input placeholder="Username" />
+
+Xpath --
+    page.locator("//tagname[@attribute='value']")
+    page.locator("//div[@class='inventory_item_img']//tagname[@id='item_4_title_link']")
+    page.locator("//button[text()='Login']")
+    HTML: <button>Login</button>
+
+Playwright Actions and Assertions 
+
+Action methods-
+click() -- use to tap or press a button, link, or other clickable element on the page
+fill()  -- use to type text into a textbox or input field
+title() -- use to get the current page title
+inputValue() -- use to read the text currently inside a textbox
+
+Assertion Methods-
+
+toHaveTitle() -- use to check that the page title matches the expected title
+toHaveURL()   -- use to check that the current page URL matches the expected URL
+toBeVisible() -- use to check that an element is visible on the page
+toHaveText()   -- use to check that an element shows the exact expected text
+toHaveValue()  -- use to check that an input field contains the expected value
+
+
+write login test with xpath locator method--
+
+How to Handle Dropdowns by using playwright methods--
+
+
+
+
+
+//What is Framework
+
+//A Framework is a standard project structure created to manage automation script in reusable
+// maintenable and scalable ways...
+
+
+//POM - page object model  
+
+//Page Manager -
+//Data driven testing // json and excel
+//Test Data generation with Helper utility by using faker package
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

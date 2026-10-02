@@ -1,0 +1,20 @@
+{
+  "name": "playwrightautomation_1aug2026_batch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^26.1.2",
+    "allure-playwright": "^3.12.2"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^10.6.0",
+    "xlsx": "^0.18.5"
+  }
+}
