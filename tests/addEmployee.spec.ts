@@ -2,7 +2,7 @@ import {test, expect} from '@playwright/test'
 import { PageManager } from '../pages/PageManager'
 import { Helper } from '../Utils/Helper';
 
-test('should add new employee', async({page})=>{
+test('should add new employee', { tag: '@smoke' }, async({page})=>{
 
 const pm = new PageManager(page)
 const empData= Helper.generateData();

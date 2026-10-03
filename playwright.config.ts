@@ -34,7 +34,7 @@ export default defineConfig({
     
     ['html',{open: 'never', outputFolder: 'playwright-report'}],
     ['line'],
-    ['junit',{outpuFile: 'test-result/results.xml'}],
+    ['junit', { outputFile: 'test-results/results.xml' }],
     ['allure-playwright', {resultsDir:'allure-results', suiteTitle:false,}]
   ],
 

@@ -4,7 +4,7 @@ import testData from '../testData/testData.json' with { type: 'json' }
 import { ExelUtils } from '../Utils/ExcelUtils'
 
 
-test('valid login', async({page})=>{
+test('valid login', { tag: '@smoke' }, async({page})=>{
 
 
 const loginPage = new LoginPage(page)
