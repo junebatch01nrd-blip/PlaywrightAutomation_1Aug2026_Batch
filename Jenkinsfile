@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         CI = 'true'
+        PLAYWRIGHT_BROWSERS_PATH = "${env.JENKINS_HOME}\\ms-playwright"
     }
 
     options {
@@ -30,33 +31,49 @@ pipeline {
 
         stage('Install Playwright Browsers') {
             steps {
-                bat 'npx playwright install --with-deps'
+                bat 'npx playwright install chromium'
             }
         }
 
         stage('Run Smoke Tests') {
             steps {
-                bat 'npx playwright test --grep "@smoke"'
+                bat 'npx playwright test --project=chromium'
             }
         }
     }
 
     post {
         always {
-            publishHTML(target: [
-                reportName: 'Playwright HTML Report',
-                reportDir: 'playwright-report',
-                reportFiles: 'index.html',
-                keepAll: true,
-                alwaysLinkToLastBuild: true,
-                allowMissing: true
-            ])
+            script {
+                if (fileExists('test-results/results.xml')) {
+                    junit testResults: 'test-results/results.xml'
+                } else {
+                    echo 'JUnit results are unavailable because the smoke tests did not run.'
+                }
 
-            allure([
-                includeProperties: false,
-                jdk: '',
-                results: [[path: 'allure-results']]
-            ])
+                if (fileExists('playwright-report/index.html')) {
+                    publishHTML(target: [
+                        reportName: 'Playwright HTML Report',
+                        reportDir: 'playwright-report',
+                        reportFiles: 'index.html',
+                        keepAll: true,
+                        alwaysLinkToLastBuild: true,
+                        allowMissing: true
+                    ])
+                } else {
+                    echo 'Playwright HTML report is unavailable because the smoke tests did not run.'
+                }
+
+                if (fileExists('allure-results')) {
+                    allure([
+                        includeProperties: false,
+                        jdk: '',
+                        results: [[path: 'allure-results']]
+                    ])
+                } else {
+                    echo 'Allure results are unavailable because the smoke tests did not run.'
+                }
+            }
         }
 
         success {
